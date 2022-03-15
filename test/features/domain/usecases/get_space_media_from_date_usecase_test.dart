@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:nasa_app_clean_architecture_tdd/core/errors/failures.dart';
-import 'package:nasa_app_clean_architecture_tdd/core/usecase/usecase.dart';
 import 'package:nasa_app_clean_architecture_tdd/features/domain/entities/space_media_entity.dart';
 import 'package:nasa_app_clean_architecture_tdd/features/domain/repositories/space_media_repository.dart';
 import 'package:nasa_app_clean_architecture_tdd/features/domain/usecases/get_space_media_from_date_usecase.dart';
