@@ -6,6 +6,8 @@ import 'package:nasa_app_clean_architecture_tdd/features/domain/entities/space_m
 import 'package:nasa_app_clean_architecture_tdd/features/domain/repositories/space_media_repository.dart';
 import 'package:nasa_app_clean_architecture_tdd/features/domain/usecases/get_space_media_from_date_usecase.dart';
 
+import '../../../mocks/date_mock.dart';
+
 class MockSpaceMediaRepository extends Mock implements ISpaceMediaRepository {}
 
 void main() {
@@ -23,8 +25,6 @@ void main() {
     title: 'test title',
     mediaUrl: 'test mediaUrl',
   );
-
-  final tDate = DateTime(2022, 03, 14);
 
   test('should get space media entity for a given date from the repository',
       () async {
@@ -47,5 +47,13 @@ void main() {
     expect(result, Left(ServerFailure()));
 
     verify(() => repository.getSpaceMediaFromDate(tDate)).called(1);
+  });
+
+  test('should return a NullParamFailure when receives a null param', () async {
+    final result = await usecase(null);
+
+    expect(result, Left(NullParamFailure()));
+
+    verifyNever(() => repository.getSpaceMediaFromDate(tDate));
   });
 }
